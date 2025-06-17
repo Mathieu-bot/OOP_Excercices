@@ -5,6 +5,12 @@ public class Account {
   private Float balance;
   private final Client owner;
 
+  public Account(String id, Client owner) {
+    this.id = id;
+    this.balance = 0.0f;
+    this.owner = owner;
+  }
+
   public Account(String id, Float balance, Client owner) {
     this.id = id;
     this.balance = balance;
@@ -36,7 +42,7 @@ public class Account {
       this.balance -= amount;
     } else {
       throw new InsufficientFundsException("Insufficient balance");
-    }
+    } 
   }
 
   public void transfer(Float amount, Account to) {
@@ -46,5 +52,9 @@ public class Account {
     } else {
       throw new InsufficientFundsException("Insufficient balance");
     }
+  }
+
+  public String consultBalance() {
+    return String.format("You have %s in your account", this.balance);
   }
 }
