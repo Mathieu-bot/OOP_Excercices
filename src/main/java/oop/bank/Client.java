@@ -1,4 +1,4 @@
-package oop.basic;
+package oop.bank;
 
 public class Client {
   private String id;
