@@ -1,9 +1,17 @@
 package oop.bank;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+
 public class Account {
   private String id;
   private Float balance;
-  private final Client owner;
+  private Client owner;
 
   public Account(String id, Client owner) {
     this.id = id;
@@ -11,41 +19,29 @@ public class Account {
     this.owner = owner;
   }
 
-  public Account(String id, Float balance, Client owner) {
-    this.id = id;
-    this.balance = balance;
-    this.owner = owner;
-  }
-
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public Float getBalance() {
-    return balance;
-  }
-
-  public Client getOwner() {
-    return owner;
-  }
-
   public void deposit(Float amount) {
+    if (amount <= 0) {
+      throw new IllegalArgumentException("Amount must be greater than 0");
+    }
     this.balance += amount;
   }
 
   public void withdraw(Float amount) {
-    if (this.balance >= amount) {
+    if (amount <= 0) {
+      throw new IllegalArgumentException("Amount must be greater than 0");
+    } else if (this.balance >= amount) {
       this.balance -= amount;
     } else {
       throw new InsufficientFundsException("Insufficient balance");
-    } 
+    }
   }
 
   public void transfer(Float amount, Account to) {
+    if (to == null) {
+      throw new IllegalArgumentException("Account to transfer must not be null");
+    } else if (to == this) {
+      throw new IllegalArgumentException("You can't transfer to yourself");
+    }
     if (this.balance >= amount) {
       this.balance -= amount;
       to.deposit(amount);
