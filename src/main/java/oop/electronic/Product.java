@@ -25,7 +25,7 @@ public class Product {
   }
 
   public void raisePrice (int percentage) {
-    if (percentage < 0 || percentage > 100) {
+    if (percentage < 0) {
       throw new IllegalArgumentException("Invalid percentage: " + percentage + "%");
     }
     this.unitPrice += this.unitPrice * percentage / 100;
@@ -33,5 +33,14 @@ public class Product {
 
   public Boolean isInStock () {
     return quantityInStock > 0;
+  }
+
+  public void sell(int number) {
+    if (number < 0) {
+      throw new IllegalArgumentException("Invalid number: " + number + ".");
+    } else if ( number > quantityInStock) {
+      throw new IllegalArgumentException("The product is out of stock.");
+    }
+    this.quantityInStock -= number;
   }
 }
