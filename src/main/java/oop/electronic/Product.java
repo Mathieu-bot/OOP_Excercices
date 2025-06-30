@@ -43,4 +43,10 @@ public class Product {
     }
     this.quantityInStock -= number;
   }
+
+  @Override
+  public  String toString () {
+    return String.format("%s {\n\t%s\n\t%f\n\t%s\n}", name, description, unitPrice, category);
+  }
+
 }
