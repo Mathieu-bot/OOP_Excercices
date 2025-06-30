@@ -1,9 +1,9 @@
 package oop.book;
 
-public enum bookType {
+public enum BookType {
   ROMANCE,
   ACTION,
-  THILLER,
+  THRILLER,
   POLITICAL,
   EDUCATION,
 }
