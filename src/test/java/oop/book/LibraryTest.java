@@ -4,9 +4,8 @@ import java.time.LocalDate;
 
 public class LibraryTest {
 
-    Author author1 = new Author("A1", "Victor Hugo", "Française", "Hug", LocalDate.of(1949, 6, 24),
-      , );
-    Author author2 = new Author("A2", "George Orwell", "Britannique");
+    Author author1 = new Author("A1", "Victor Hugo", "François", "Hug", LocalDate.of(1949, 6, 24), Author.Gender.MALE, "Mada");
+    Author author2 = new Author("A2", "Victor", "Rabe", "Vic", LocalDate.of(2000, 7, 4), Author.Gender.MALE, "France");
 
     Book book1 = new Book(
       "B1",
